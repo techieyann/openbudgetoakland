@@ -20,7 +20,7 @@ $(function() {
 		});
 		cuts = {"time.year": cutString};
 	}
-
+	console.log(cuts);
     // Start collecting breadcrumbs. We begin with Departments (base url)
     var path = $.url().attr('path');
     var crumbs = [{path:path, title:'Departments'}];
