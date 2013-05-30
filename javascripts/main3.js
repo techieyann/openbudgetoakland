@@ -7,6 +7,20 @@ $(function() {
     // Purl is available here: https://github.com/allmarkedup/jQuery-URL-Parser
     var parameters = $.url().param();
 
+	if(parameters['reference_year'])
+	{
+		var cutString = "";
+		var years = parameters['reference_year'].split("+");
+		$.each(years, function(index, value){
+			if(index!=0)
+			{
+				cutString += "|time.year:";
+			}
+			cutString += value;
+		});
+		cuts = {"time.year": cutString};
+	}
+
     // Start collecting breadcrumbs. We begin with Departments (base url)
     var path = $.url().attr('path');
     var crumbs = [{path:path, title:'Departments'}];

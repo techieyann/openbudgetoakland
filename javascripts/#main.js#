@@ -1,16 +1,13 @@
 $(function() {
-    // Default drilldowns and cuts and year
-	var defaultYear = 2013;
-    var drilldowns = ["department", "unit", "fund"];
-    var cuts = {"time.year": "2013|time.year:2014"};
+    // Default drilldowns and cuts
+    var drilldowns = ["department", "unit", "child-fund"];
 
 
+    var cuts = {"time.year": "2011|time.year:2012"};
 
     // Get url parameters (this could be easily parsed, but we use purl)
     // Purl is available here: https://github.com/allmarkedup/jQuery-URL-Parser
     var parameters = $.url().param();
-
-
 
     // Start collecting breadcrumbs. We begin with Departments (base url)
     var path = $.url().attr('path');
@@ -47,7 +44,7 @@ $(function() {
     };
 
     var context = {
-	dataset: "mayor_s_proposed_policy_budget_fy2013-15",
+	dataset: "oakland-adopted-budget-fy-2011-13-expenditures",
 	siteUrl: "http://openspending.org",
         drilldown: function(node) { // Gets called on node click
 	    // If the node has children we can drill more
@@ -67,10 +64,9 @@ $(function() {
 	    else 
 	    { 
 		// This can be made more beautiful
-		alert("That's as low as we go.");
+		alert("Sorry, we can't dig deeper");
 	    }
 	}};
     // Create the Treemap
-    // HACK: Override $jit.Trans.Expo.easeOut transition when it's loaded to eliminate animation
-    window.wdg_widget = new OpenSpending.Treemap($('#treewidget13-15'), context, state);
+    window.wdg_widget = new OpenSpending.Treemap($('#treewidget11-13'), context, state);	
 });
