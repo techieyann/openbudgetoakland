@@ -1,29 +1,11 @@
 $(function() {
-    // Default drilldowns and cuts and year
-	var defaultYear = 2013;
-    var drilldowns = ["department", "unit", "fund"];
+    // Default drilldowns and cuts
+    var drilldowns = ["fund", "department", "unit"];
     var cuts = {"time.year": "2013|time.year:2014"};
-
-
 
     // Get url parameters (this could be easily parsed, but we use purl)
     // Purl is available here: https://github.com/allmarkedup/jQuery-URL-Parser
     var parameters = $.url().param();
-
-	if(parameters['reference_year'])
-	{
-		var cutString = "";
-		var years = parameters['reference_year'].split("+");
-		$.each(years, function(index, value){
-			if(index!=0)
-			{
-				cutString += "|time.year:";
-			}
-			cutString += value;
-		});
-		cuts = {"time.year": cutString};
-	}
-	console.log(cuts);
 
     // Start collecting breadcrumbs. We begin with Departments (base url)
     var path = $.url().attr('path');
@@ -84,6 +66,5 @@ $(function() {
 	    }
 	}};
     // Create the Treemap
-    // HACK: Override $jit.Trans.Expo.easeOut transition when it's loaded to eliminate animation
     window.wdg_widget = new OpenSpending.Treemap($('#treewidget13-15'), context, state);
 });
