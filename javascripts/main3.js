@@ -25,7 +25,7 @@ $(function() {
 			//the first argument has nothing preceding it
 			if(index!=0)
 			{
-				//after the first, prepend the new cut and the '|' to perform and addition
+				//after the first, prepend the new cut and the '|' to perform an addition
 				cutString += "|time.year:";
 			}
 			//add the year
