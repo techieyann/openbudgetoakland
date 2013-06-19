@@ -25,10 +25,12 @@ $(function() {
 		var years = parameters['reference_years'].split("+");
 		var i = 0;
 		//loop through the list of years
+		console.log(years);
 		$.each(years, function(index, value){
 			//the first argument has nothing preceding it
 			if(i!=0)
 			{
+				console.log("not first year...");
 				//after the first, prepend the new cut and the '|' to perform and addition
 				cutString += "|time.year:";
 			}
