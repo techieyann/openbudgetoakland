@@ -5,7 +5,8 @@ $(function() {
 
 	//Default year cuts
     var cuts = {"time.year": "2013|time.year:2014"};
-
+	//Default header text
+	var headerText = "2013-15 Mayor's Proposed Spending (Treemap)"
 
 
     // Get url parameters (this could be easily parsed, but we use purl)
@@ -21,11 +22,12 @@ $(function() {
 	if(parameters['reference_years'])
 	{
 		//initialize the string to be formatted, and separate the years from the argument
-		console.log(parameters['reference_years']);
+
 		var cutString = "";
+		headerText = "";
 		var years = parameters['reference_years'].split(" ");
 		var i = 0;
-		console.log(years);
+
 		//loop through the list of years
 
 		$.each(years, function(index, value){
@@ -34,17 +36,20 @@ $(function() {
 			{
 				//after the first, prepend the new cut and the '|' to perform and addition
 				cutString += "|time.year:";
+				headerText += "-";
 			}
 			//add the year
 			cutString += value;
+			headerText += value;
 			i++;
 		});
 		//apply the formatted cuts string
 		cuts = {"time.year": cutString};
+		headerText += " budget (Treemap)";
 	}
 
-	console.log(cuts);
 
+	$('#year-header').html(headerText);
     // Start collecting breadcrumbs. We begin with Departments (base url)
     var path = $.url().attr('path');
     var crumbs = [{path:path, title:'Departments'}];
