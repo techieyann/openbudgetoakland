@@ -21,16 +21,17 @@ $(function() {
 	if(parameters['reference_years'])
 	{
 		//initialize the string to be formatted, and separate the years from the argument
+		console.log(parameters['reference_years']);
 		var cutString = "";
 		var years = parameters['reference_years'].split(" ");
 		var i = 0;
+		console.log(years);
 		//loop through the list of years
 
 		$.each(years, function(index, value){
 			//the first argument has nothing preceding it
 			if(i!=0)
 			{
-
 				//after the first, prepend the new cut and the '|' to perform and addition
 				cutString += "|time.year:";
 			}
@@ -40,9 +41,9 @@ $(function() {
 		});
 		//apply the formatted cuts string
 		cuts = {"time.year": cutString};
-
 	}
 
+	console.log(cuts);
 
     // Start collecting breadcrumbs. We begin with Departments (base url)
     var path = $.url().attr('path');
